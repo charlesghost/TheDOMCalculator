@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded",function(event){
  
 	
     // global variables for calculator
-	var number1 = true;
+    
+	var number1 = 0;
 	var number2 = false;
-	var ops = false;
+	var operation = false;
 
 	// setting the variables
 
@@ -28,7 +29,9 @@ document.addEventListener("DOMContentLoaded",function(event){
 	function ClearCalc(){
 		var screen = document.getElementById('screen');
 		screen.innerHTML = "Sparta Calculator"
-	    
+		number1 = 0;
+		operation = false;
+
 	}
 
 	// Show calculation result
@@ -69,10 +72,10 @@ document.addEventListener("DOMContentLoaded",function(event){
 
 		for (var i = 0; i < buttons.length; i++) {
 			buttons[i].addEventListener('click', function(event){
-				if (number1 === true) {
+				if (number1 === 0) {
 					screen.innerHTML = this.innerHTML;
 					number1 = parseInt(this.innerHTML);
-					ops = true;
+					operation = true;
 				} else if (number2 === true) {
 					screen.innerHTML = this.innerHTML;
 					number2 = parseInt(this.innerHTML);
@@ -87,7 +90,7 @@ document.addEventListener("DOMContentLoaded",function(event){
 		var screen = document.getElementById('screen');
 		for (var i = 0; i < operate.length; i++) {
 			operate[i].addEventListener('click', function(event) {
-				if (ops === true) {
+				if (operation === true) {
 					screen.innerHTML = this.innerHTML;
 					ops = this.innerHTML;
 					number2 = true;
